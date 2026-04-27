@@ -311,7 +311,7 @@ export default function DashboardPage() {
       >
         <div className="flex items-center gap-3 min-w-0">
           <h2 className="text-lg font-bold font-display text-foreground tracking-tight">
-            ResourceFlow
+            Smart Resource Allocation
           </h2>
           {decision && (
             <Badge

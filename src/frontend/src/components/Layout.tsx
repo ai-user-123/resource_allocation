@@ -52,7 +52,7 @@ export function Layout({ children }: LayoutProps) {
           </div>
           <div>
             <div className="text-sm font-bold font-display text-sidebar-foreground tracking-wide">
-              ResourceFlow
+              Smart Resource Allocation
             </div>
             <div className="text-[10px] text-muted-foreground font-mono">
               v1.0 · live
@@ -115,7 +115,7 @@ export function Layout({ children }: LayoutProps) {
                 n.to === "/"
                   ? currentPath === "/"
                   : currentPath.startsWith(n.to),
-              )?.label ?? "ResourceFlow"}
+              )?.label ?? "Smart Resource Allocation"}
             </h1>
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -146,7 +146,7 @@ export function Layout({ children }: LayoutProps) {
         {/* Footer */}
         <footer className="bg-card border-t border-border px-6 py-2 flex items-center justify-between shrink-0">
           <span className="text-[11px] text-muted-foreground font-mono">
-            © {new Date().getFullYear()} ResourceFlow. Built with{" "}
+            © {new Date().getFullYear()} Smart Resource Allocation. Built with{" "}
             <span className="text-accent">♥</span> using{" "}
             <a
               href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(
