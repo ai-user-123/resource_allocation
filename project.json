@@ -1,0 +1,23 @@
+{
+  "overview": "Smart Resource Allocation Framework — a professional monitoring dashboard with ML-driven scheduling decisions, adaptive policy override, and simulation mode. Tracks CPU, memory, process queues and dynamically selects between Round Robin, Shortest Job First, and Priority scheduling algorithms.",
+  "features": [
+    "Real-time monitoring dashboard with CPU, memory, I/O, and process count charts",
+    "ML decision engine selecting between Round Robin, SJF, and Priority scheduling",
+    "Greedy prioritization with conflict resolution scoring",
+    "Adaptive policy override that forces Round Robin on throughput degradation",
+    "Process simulation mode with Poisson arrivals and log-normal burst times",
+    "Gantt chart of process execution timeline",
+    "Alert badges for threshold violations",
+    "Performance KPI dashboard with 5 target metrics"
+  ],
+  "category": "productivity",
+  "tags": [
+    "monitoring",
+    "scheduling",
+    "ml",
+    "dashboard",
+    "simulation",
+    "resource-management"
+  ],
+  "last_updated": "2026-04-27T11:07:06.218Z"
+}

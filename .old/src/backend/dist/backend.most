@@ -1,0 +1,74 @@
+// Version: 1.0.0
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type PolicyOverride__1066353219 =
+  {active : Bool; override_time : Timestamp__301639476; policy : Text};
+type ProcessId__1049125016 = Text;
+type Process__504032236 =
+  {
+    arrival_time : Timestamp__301639476;
+    burst_time : Float;
+    name : Text;
+    pid : ProcessId__1049125016;
+    priority : Nat;
+    status : Text
+  };
+type ResourceLog__723255680 =
+  {
+    active_processes : Nat;
+    cpu_usage : Float;
+    decision_confidence : Float;
+    io_bandwidth : Float;
+    log_id : Nat;
+    memory_usage : Float;
+    selected_policy : Text;
+    timestamp : Timestamp__301639476
+  };
+type SchedulingResult__378964825 =
+  {
+    completion_time : Timestamp__301639476;
+    pid : ProcessId__1049125016;
+    policy_applied : Text;
+    result_id : Nat;
+    turnaround_time : Float;
+    waiting_time : Float
+  };
+type Timestamp__301639476 = Int;
+actor {
+  stable logs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ResourceLog__723255680]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextLogIdHolder :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Nat]];
+      var elementIndex : Nat__490723111
+    };
+  stable nextResultIdHolder :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Nat]];
+      var elementIndex : Nat__490723111
+    };
+  stable overrideHolder :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?PolicyOverride__1066353219]];
+      var elementIndex : Nat__490723111
+    };
+  stable processes :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Process__504032236]];
+      var elementIndex : Nat__490723111
+    };
+  stable results :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?SchedulingResult__378964825]];
+      var elementIndex : Nat__490723111
+    }
+};

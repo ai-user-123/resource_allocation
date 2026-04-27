@@ -1,0 +1,75 @@
+type Timestamp = int;
+type SubmitProcessReceipt = 
+ record {
+   message: text;
+   process_id: ProcessId;
+   success: bool;
+ };
+type SchedulingDecision = 
+ record {
+   confidence: float64;
+   features_used: vec text;
+   override_active: bool;
+   policy: text;
+   reasoning: text;
+ };
+type ResourceLog = 
+ record {
+   active_processes: nat;
+   cpu_usage: float64;
+   decision_confidence: float64;
+   io_bandwidth: float64;
+   log_id: nat;
+   memory_usage: float64;
+   selected_policy: text;
+   timestamp: Timestamp;
+ };
+type ProcessId = text;
+type Process = 
+ record {
+   arrival_time: Timestamp;
+   burst_time: float64;
+   name: text;
+   pid: ProcessId;
+   priority: nat;
+   status: text;
+ };
+type PaginatedLogs = 
+ record {
+   logs: vec ResourceLog;
+   page: nat;
+   page_size: nat;
+   total: nat;
+ };
+type MetricsSnapshot = 
+ record {
+   active_processes: nat;
+   cpu_usage: float64;
+   io_bandwidth: float64;
+   memory_usage: float64;
+   timestamp: Timestamp;
+ };
+type AggregatedStats = 
+ record {
+   avg_turnaround_time: float64;
+   avg_waiting_time: float64;
+   throughput_tasks_per_sec: float64;
+   total_completed: nat;
+ };
+service : {
+  clearData: () -> ();
+  getLogs: (page: nat, page_size: nat) -> (PaginatedLogs) query;
+  getMetrics: () -> (MetricsSnapshot) query;
+  getProcesses: () -> (vec Process) query;
+  getResults: () -> (AggregatedStats) query;
+  getSchedulingDecision: () -> (SchedulingDecision) query;
+  overridePolicy: (policy: text) -> ();
+  startSimulation: (processCount: nat) -> ();
+  submitMetrics: (cpu: float64, memory: float64, active_processes: nat,
+   io_bandwidth: float64) -> ();
+  submitProcess: (pid: ProcessId, name: text, priority: nat, burst_time:
+   float64, arrival_time: Timestamp) -> (SubmitProcessReceipt);
+  submitSchedulingResult: (pid: ProcessId, waiting_time: float64,
+   turnaround_time: float64, completion_time: Timestamp, policy_applied:
+   text) -> ();
+}
